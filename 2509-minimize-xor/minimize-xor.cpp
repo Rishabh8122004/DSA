@@ -8,22 +8,18 @@ public:
         for(int i = 0;i<32;i++){
             if(b[i] == 1)count++;
             if(a[i] == 1)count--;
-            cout<<a[i]<<" ";
         }
-        cout<<endl<<count;
         if(count<0){
             for(int i = 0;i<32;i++){if(a[i] == 1 && count<0){a[i] = 0;count++;}
             if(count == 0)break;
             }
         }
-        cout<<endl;
         for(int i = 0;i<32;i++){
             if(a[i] != 1 && count>0){a[i] = 1;count--;}
             if(count == 0) break;
         }
         long int m = 1;
         for(int i = 0;i<32;i++){
-            cout<<b[i]<<" ";
             ans+=(a[i]==1?m:0);
             m*=2;
         }
