@@ -1,12 +1,12 @@
 class Solution {
 public:
-    bool solve(vector<int>& arr, int start, vector<int>& v) {
+    bool solve(vector<int>& arr, int start, vector<bool>& v) {
         if (start > arr.size() - 1 || start < 0)
             return false;
         if (arr[start] == 0)
             return true;
-        for(int i = 0;i<v.size();i++){if(start == v[i])return false; }
-        v.push_back(start);
+        if(v[start]) return false;
+        v[start] = true;
         if (solve(arr, start + arr[start],v))
             return true;
         if (solve(arr, start - arr[start],v))
@@ -14,7 +14,7 @@ public:
         return false;
     }
     bool canReach(vector<int>& arr, int start) {
-        vector<int> v;
+        vector<bool> v(arr.size(),false);
         return solve(arr, start, v);
     }
 };
