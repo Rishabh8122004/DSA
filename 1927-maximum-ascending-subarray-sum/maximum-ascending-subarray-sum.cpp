@@ -12,7 +12,7 @@ public:
                 sum = 0;
             }
         }
-        msum = max(msum,nums[nums.size()-1]);
+       msum = max(msum,nums[nums.size()-1]);
         return msum;
     }
 };
