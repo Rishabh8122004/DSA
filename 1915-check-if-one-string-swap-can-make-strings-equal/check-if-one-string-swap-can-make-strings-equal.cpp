@@ -7,8 +7,8 @@ public:
         for(int i = 0;i<n;i++){
             if(s1[i]!=s2[i]){
                 count++;
-                if(count == 1){a = s1[i];}
-                if(count == 2 && s2[i]!=a){return false;}
+                // if(count == 1){a = s1[i];}
+                // if(count == 2 && s2[i]!=a){return false;}
                 if(count>2)return false;
             }
         }
