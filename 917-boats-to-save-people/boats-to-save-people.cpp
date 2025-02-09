@@ -4,7 +4,6 @@ public:
         sort(people.begin(),people.end());
         int n = people.size();
         vector<int> freq(limit+1);
-        int p = n-1;
         int ans = 0;
         for(int j = 0;j<=n-1;j++){
             freq[people[j]]++;
