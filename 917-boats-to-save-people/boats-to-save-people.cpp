@@ -16,7 +16,7 @@ public:
             if(freq[limit-people[i]]>0){freq[limit-people[i]]--;}
             else{
                 for(int j = n-1;j>i;j--){
-                    if((freq[people[j]]>0) &&(people[i]+people[j]<=limit)){freq[people[j]]--;break;}
+                    if((freq[people[j]]>0) &&(people[i]+people[j]<=limit)){freq[people[j]]--;break;n--;}
                 }
             }
             ans++;
