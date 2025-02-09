@@ -10,6 +10,7 @@ public:
             freq[people[j]]++;
         }
         ans+=freq[limit];
+        n -=freq[limit];
         freq[limit] = 0;
         for(int i = 0;i<n;i++){
             if(freq[people[i]]>0){
