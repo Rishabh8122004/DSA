@@ -15,7 +15,7 @@ public:
         int minsum = n;
         for(int i = 2;i<=sqrt(n);i++){
             if(n%i == 0){
-                if(minsum>(i+minSteps(n/i))){minsum = i+minSteps(n/i);}
+                if(minsum>(i+(n/i))){minsum = i+minSteps(n/i);}
             }
         }
         return minsum;
