@@ -2,12 +2,12 @@ class Solution {
 public:
     bool isPalindrome(int x) {
         if(x<0)return false;
-        string s = to_string(x);
-        int i = 0,j = s.size()-1;
-        while(i<j){
-            if(s[i] != s[j]) return false;
-            i++;j--;
+        long int y = x;
+        long int z = 0;
+        while(y>0){
+            z = (z*10)+(y%10);
+            y/=10;
         }
-        return true;
+        return z == x;
     }
 };
