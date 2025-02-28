@@ -10,7 +10,7 @@ public:
             ans = max(sum,ans);
             j++;
         }
-        i = 0,j = 0;
+        i = 0;j = 0;
         sum = 0;
         while(j<nums.size()){
             sum+=nums[j];
