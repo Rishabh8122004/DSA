@@ -2,7 +2,7 @@ class Solution {
 public:
     long long countBadPairs(vector<int>& nums) {
         int n = nums.size();
-        long long p = (n%2 == 0?((long long )(n/2)*(n - 1)):((long long )n*((n-1)/2)));
+        long long p = (long long )n*(n-1)/2;
         for (int i = 0; i < nums.size(); i++) {
             nums[i] -= i;
         }
