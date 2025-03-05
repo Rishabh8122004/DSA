@@ -1,17 +1,16 @@
 class Solution {
 public:
     string clearDigits(string s) {
-        string ans = "";
-        bool flag = true;
+        stack<char> s1;
         for(int i = 0;i<s.size();i++){
-            if(s[i] >= '0' && s[i]<='9'){
-                flag = false;
-                ans+=i>0?s.substr(0,i-1):"";
-                ans+=i<s.size()-1?s.substr(i+1,s.size()-1-i):"";
-                break;
-            }
+            if(s[i]>='0' && s[i]<='9' && !s1.empty()) s1.pop();
+            else s1.push(s[i]);
         }
-        if(flag) return s;
-        return clearDigits(ans);
+        s = "";
+        while(!s1.empty()){
+            s = s1.top()+s;
+            s1.pop();
+        }
+        return s;
     }
 };
