@@ -13,10 +13,7 @@ public:
         }
         }
         if(v.size() == n){
-            for(int i = 0;i<n;i++){
-                colors[i] = v[i];
-                cout<<colors[i]<<" ";
-            }
+            colors = v;
         }
         int ans = 0;
         int idx = -1;
