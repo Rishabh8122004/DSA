@@ -1,33 +1,32 @@
 class Solution {
 public:
-    int numberOfSubstrings(string word) {
+    int numberOfSubstrings(string s) {
         // using sliding window technique;
         int ans = 0;
-        int n = word.size();
+        int n = s.size();
         int a = 0, b = 0, c = 0;
-        int p = 0, q = 0;
-        int v = n;
+        int i = 0, j = 0;
         char ch;
-        while (q < n) {
-            ch = word[q];
+        while (j < n) {
+            ch = s[j];
             if (ch == 'a')
                 a++;
             else if (ch == 'b')
                 b++;
             else if (ch == 'c')
                 c++;
-            while (p < n && a > 0 && b > 0 && c > 0) {
-                ans += (n - q);
-                ch = word[p];
+            while (i < n && a > 0 && b > 0 && c > 0) {
+                ans += (n - j);
+                ch = s[i];
                 if (ch == 'a')
                     a--;
                 else if (ch == 'b')
                     b--;
                 else if (ch == 'c')
                     c--;
-                p++;
+                i++;
             }
-            q++;
+            j++;
         }
         return ans;
     }
