@@ -11,7 +11,7 @@ public:
                     vector<bool>p(26,false);
                     v[s[i]-'a'] = true;
                     for(int k = i+1;k<j;k++){
-                        !p[s[k]-'a']?c++:c = c;
+                        c+=(!p[s[k]-'a']?1:0);
                         p[s[k]-'a'] = true;
                     }
                     break;
