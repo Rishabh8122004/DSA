@@ -15,7 +15,7 @@ public:
                 b++;
             else if (ch == 'c')
                 c++;
-            while (i < n && a > 0 && b > 0 && c > 0) {
+            while (i < n && a > 0 && b > 0 && c > 0) {//while our substring is valid,we gonna reduce it and adding all the possibilities of new valid substring
                 ans += (n - j);
                 ch = s[i];
                 if (ch == 'a')
