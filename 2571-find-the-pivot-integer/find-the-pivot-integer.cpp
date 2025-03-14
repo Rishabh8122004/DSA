@@ -9,7 +9,6 @@ public:
             if(s1 == s2) return m;
             else if(s1 > s2) hi = m-1;
             else lo = m+1;
-            cout<<s1<<" "<<s2<<"   "<<m;
         }
         return -1;
     }
