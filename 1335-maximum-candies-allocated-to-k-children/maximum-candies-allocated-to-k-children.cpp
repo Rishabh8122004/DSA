@@ -6,6 +6,7 @@ public:
             if(candies[i]>=x){
                 c+=(candies[i]/x);
             }
+            if(c>=k)return true;
         }
         return c>=k;
     }
