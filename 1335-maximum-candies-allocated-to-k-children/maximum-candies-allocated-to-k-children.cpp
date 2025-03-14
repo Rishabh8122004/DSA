@@ -1,14 +1,13 @@
 class Solution {
 public:
     bool can_be_distributed(int x,vector<int>& candies, long long k){
-        long long int c = 0;
         for(int i = 0;i<candies.size();i++){
             if(candies[i]>=x){
-                c+=(candies[i]/x);
+                k-=(candies[i]/x);
             }
-            if(c>=k)return true;
+            if(k<=0)return true;
         }
-        return c>=k;
+        return k<=0;
     }
     int maximumCandies(vector<int>& candies, long long k) {
         int m = 0,n = candies.size(),ans = 0;
