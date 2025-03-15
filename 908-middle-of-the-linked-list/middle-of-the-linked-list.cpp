@@ -16,9 +16,10 @@ public:
         ListNode* ans = head;
         while(temp){ // using two pointer technique. temp moves twice when ans moves only once
             temp = temp->next;
-            if(temp)temp = temp->next;
-            else break;
-            ans = ans->next;
+            if(temp){
+                temp = temp->next;
+                ans = ans->next;
+            }
         }
         return ans;
     }
