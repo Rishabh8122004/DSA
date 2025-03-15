@@ -13,16 +13,13 @@ public:
     ListNode* middleNode(ListNode* head) {
         int x = 1;
         ListNode*temp = head;
-        while(temp->next!=NULL){
+        ListNode* ans = head;
+        bool f = false;
+        while(temp){
             temp = temp->next;
-            x++;
+            if(f) ans = ans->next;
+            f = !f;
         }
-        x = (x%2 == 0?(x/2)+1 : (x+1)/2);
-        temp = head;
-        while(x>1){
-            temp = temp->next;
-            x--;
-        }
-        return temp;
+        return ans;
     }
 };
