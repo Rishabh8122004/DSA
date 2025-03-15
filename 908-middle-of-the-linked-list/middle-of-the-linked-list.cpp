@@ -14,11 +14,11 @@ public:
         int x = 1;
         ListNode*temp = head;
         ListNode* ans = head;
-        bool f = false;
-        while(temp){
+        while(temp){ // using two pointer technique. temp moves twice when ans moves only once
             temp = temp->next;
-            if(f) ans = ans->next;
-            f = !f;
+            if(temp)temp = temp->next;
+            else break;
+            ans = ans->next;
         }
         return ans;
     }
