@@ -13,7 +13,7 @@ public:
         int max = 0;
         for(int i = 0;i<nums.size();i++){if(max<nums[i])max = nums[i];}
         int lo = 1,hi = max;
-        int ans = INT_MAX;
+        int ans;
         while(lo<=hi){
             int mid = lo+(hi-lo)/2;
             if(can_be_robbed(mid,k,nums)){ans = mid;hi = mid-1;}
