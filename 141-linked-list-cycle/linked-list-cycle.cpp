@@ -9,12 +9,15 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        int x = 0;
-        while(x<=10001){
-            if(head == NULL)return false;
-            head = head->next;
-            x++;
+        ListNode *s = head;
+        ListNode *f = head;
+        while(f){
+            f = f->next;
+            if(f == NULL)break;
+            s = s->next;
+            f = f->next;
+            if(f == s)return true;
         }
-        return true;
+        return false;
     }
 };
