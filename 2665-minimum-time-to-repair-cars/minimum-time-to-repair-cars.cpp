@@ -11,7 +11,7 @@ public:
         long long ans = 0;
         int m = INT_MAX;
         for(int i = 0;i<ranks.size();i++){m = min(m,ranks[i]);}
-        long long lo = 1,hi = (long long)(m*(long long)(cars*(long long)cars));
+        long long lo = 1,hi = (m*(long long)(cars*(long long)cars));
         while(lo<=hi){
             long long mid = lo+(hi-lo)/2;
             if(isvalid(mid,ranks,cars)){ans = mid;hi = mid-1;}
