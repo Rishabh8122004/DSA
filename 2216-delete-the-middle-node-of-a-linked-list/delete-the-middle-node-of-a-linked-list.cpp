@@ -15,7 +15,6 @@ public:
         ListNode* back = head;
         if(front->next == NULL){return NULL;}
         while(front->next->next){
-            if(front->next == NULL){back->val = back->next->val;back->next = back->next->next;return head;}
             front = front->next->next;
             back = back->next;
             if(front->next == NULL){back->val = back->next->val;back->next = back->next->next;return head;}
