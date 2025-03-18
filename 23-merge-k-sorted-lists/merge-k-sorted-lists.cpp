@@ -1,6 +1,6 @@
 class Solution {
 public:
-    ListNode* sortlist(ListNode* a,ListNode* b){
+    ListNode* sortlists(ListNode* a,ListNode* b){
         if(a == NULL && b == NULL)return NULL;
         else if(a == NULL){return b;}
         else if(b == NULL)return a;
@@ -31,13 +31,16 @@ public:
         return head;
     }
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        if(lists.size() == 0)return NULL;
-        ListNode* ans = lists[0];
-        int j = 1;
-        while(j<lists.size()){
-            ans = sortlist(ans,lists[j]);
-            j++;
+        if(lists.size() == 0) return NULL;
+        ListNode* ans;
+        while(lists.size()>1){
+            ListNode* a = lists[0];
+            lists.erase(lists.begin());
+            ListNode* b = lists[0];
+            lists.erase(lists.begin());
+            ans = sortlists(a,b);
+            lists.push_back(ans);
         }
-        return ans;
+        return lists[0];
     }
 };
