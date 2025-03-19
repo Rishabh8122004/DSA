@@ -10,14 +10,11 @@ public:
     int minOperations(vector<int>& nums) {
         int n = nums.size();
         int ans = 0;
-        bool f = true;
         int i = 0,j = 2;
         while(j<nums.size()){
-            f = true;
             if(nums[i] == 0){
-                f = false;
+              flip(nums,i,j);ans++;
             }
-            if(!f){flip(nums,i,j);ans++;}
             i++;j++;
         }
         if(nums[n-1] != nums[n-2] || nums[n-1] != nums[n-3]){return -1;}
