@@ -11,27 +11,27 @@
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
-        ListNode *t = head;
-        ListNode* lo = new ListNode(0);
-        ListNode* hi = new ListNode(0);
-        ListNode* tl = lo;
-        ListNode* th = hi;
+        ListNode *t = head; // to iterate the main linkedlist
+        ListNode* lo = new ListNode(0); // two linked list , one connects smaller nodes
+        ListNode* hi = new ListNode(0); // another connects bigger nodes
+        ListNode* tl = lo; // to iterate lo linkedlist
+        ListNode* th = hi; // to iterate hi linkedlist
         while(t){
-            if(t->val<x){
+            if(t->val<x){ // connecting smaller nodes
                 tl->next = t;
                 tl = tl->next;
             }
-            else{
+            else{ // connecting greator nodes
             th->next = t;
             th = th->next;
             }
-            t = t->next;
+            t = t->next; // iterating through head
         }
-        lo = lo->next;
-        hi = hi->next;
-        tl->next = hi;
-        th->next = NULL;
-        if(lo == NULL)return hi;
-        return lo;
+        lo = lo->next; // since lo was an extra node , removing it 
+        hi = hi->next; // simmilarly removing hi because it was extra
+        tl->next = hi; // connecting lo with hi
+        th->next = NULL; // connecting hi with null
+        if(lo == NULL)return hi; // if there is no smaller element then returning hi
+        return lo; // else, returning lo
     }
 };
