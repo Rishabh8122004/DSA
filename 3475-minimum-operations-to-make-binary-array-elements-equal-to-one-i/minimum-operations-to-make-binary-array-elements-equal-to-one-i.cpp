@@ -11,14 +11,14 @@ public:
         int n = nums.size();
         int ans = 0;
         int i = 0,j = 2;
-        while(j<nums.size()){
+        while(i<n){
             if(nums[i] == 0){
+                if(j>=n)return -1;
               flip(nums,i,j);ans++;
             }
             i++;j++;
         }
-        if(nums[n-1] != nums[n-2] || nums[n-1] != nums[n-3]){return -1;}
-        if(nums[n-1] == nums[n-2] && nums[n-1] == nums[n-3] && nums[n-1] == 0){ans++;}
+        //if(nums[n-1] != nums[n-2] || nums[n-1]!=nums[n-3])return -1;
         return ans;
     }
 };
