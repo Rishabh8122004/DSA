@@ -18,7 +18,7 @@ public:
         ans = INT_MAX;
         vector<int> ele;
         for(int i = 0;i<v.size();i++){if(v[i].second){while(v[i].first--){ele.push_back(i);}}}
-        for(int i = ele.size()/2;i<ele.size() && i <= (ele.size()/2);i++){
+        int i = ele.size()/2;
             int a = 0;bool flag = true;
             for(int j = 0;j<grid.size();j++){
                 for(int k = 0;k<grid[j].size();k++){
@@ -30,7 +30,6 @@ public:
                 if(!flag)break;
             }
             if(flag)ans = min(a,ans);
-        }
         return ans == INT_MAX?-1:ans;
     }
 };
