@@ -1,48 +1,41 @@
-/*
-Definition for a Node.
-class Node {
-public:
-    int val;
-    Node* next;
-    Node* random;
-    
-    Node(int _val) {
-        val = _val;
-        next = NULL;
-        random = NULL;
-    }
-};
-*/
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
+        if (head == NULL) return NULL;
+
         Node* main = head;
-        if(head == NULL)return head;
-        Node* h = new Node(0);
-        Node*t = h;
-        int n = 1;
-        while(head){  
-            Node* temp1 = new Node(0),*temp2 = new Node(0);
-            temp1->val = head->val;
-            if(head->next)temp2->val = head->next->val;
-            t->val = temp1->val;
-            if(head->next)t->next = temp2;
-            t = t->next;
-            head = head->next;
-            n++;
+
+        // Step 1: Insert copied nodes next to original nodes
+        while (head) {
+            Node* temp = new Node(head->val);
+            temp->next = head->next;
+            head->next = temp;
+            head = temp->next;
         }
-        Node* p = main;
-        Node* q = h;
-        while(p){
-            Node* a = main,*b = h;
-            while(a!=p->random && a){
-                a = a->next;
-                b = b->next;
+
+        // Step 2: Assign random pointers to copied nodes
+        head = main;
+        while (head) {
+            if (head->random) {
+                head->next->random = head->random->next;
             }
-            if(p->random)q->random = b;
-            p = p->next;
-            q = q->next;
+            head = head->next->next;
         }
-        return h;
+
+        // Step 3: Separate original and copied list
+        head = main;
+        Node* copiedHead = head->next;
+        Node* copied = copiedHead;
+
+        while (head) {
+            head->next = copied->next;
+            head = head->next;
+            if (head) {
+                copied->next = head->next;
+                copied = copied->next;
+            }
+        }
+
+        return copiedHead;
     }
 };
