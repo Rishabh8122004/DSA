@@ -35,11 +35,9 @@ public:
         Node* q = h;
         while(p){
             Node* a = main,*b = h;
-            int j = 0;
             while(a!=p->random && a){
                 a = a->next;
                 b = b->next;
-                j++;
             }
             if(p->random)q->random = b;
             p = p->next;
