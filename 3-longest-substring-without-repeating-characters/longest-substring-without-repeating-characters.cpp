@@ -1,19 +1,29 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
+        int maxlength = 0;
         int n = s.size();
-        int ans = 0;
-        vector<int>v(256);
-        int i = 0,j = 0;
-        while(j<n){
-            v[(int)s[j]]++;
-            if(v[(int)s[j]]>1){
-                while(v[(int)s[j]]!=1){v[(int)s[i]]--;i++;}
+        for(int i = 0;i<n;i++)
+        {
+        for(int j = 1;j<=n-i;j++)
+        {
+            string p = s.substr(i,j); // declaring a string to access sub-string
+            int a = p.size(); // getting substring size
+            bool check = true; // apllying check if sub string is favourable or not
+            vector<int> v(256);
+            for(int i = 0;i<p.size();i++)
+            {
+                int x = p[i];
+                v[x]++;
+                if(v[x]>1) {check = false; break;}
             }
-            ans = max(ans,j-i+1);
-            //cout<<i<<" "<<j<<"    ";
-            j++;
+            if(check == false)break;
+            if(check && maxlength < a)
+            {
+                maxlength = a;
+            }
         }
-        return ans;
+        }
+        return maxlength;
     }
 };
