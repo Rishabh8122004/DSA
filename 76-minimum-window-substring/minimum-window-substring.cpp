@@ -3,7 +3,7 @@ public:
     string minWindow(string s, string t) {
         if(s == t)return s;
         if(s.size()<t.size())return "";
-        vector<int>v(256,0);
+        vector<int>v(128,0); // full ascii range
         for(int i = 0;i<t.size();i++){v[t[i]]++;}
         int tw = t.size();
         int i = 0,j = 0;
