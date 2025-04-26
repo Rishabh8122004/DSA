@@ -7,8 +7,9 @@ public:
         for(int i = 0;i<m;i++){
             v[(int)s1[i]-97]++;
         }
+        vector<int> v2(26),v3(26);
         for(int i = 0;i<n-m+1;i++){
-            vector<int> v2(26);
+            v2 = v3;
             for(int j = i;j<i+m;j++){
                 v2[(int)s2[j]-97]++;
             }
