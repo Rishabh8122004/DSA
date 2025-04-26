@@ -1,25 +1,29 @@
 class Solution {
 public:
-    int subarray(vector<int>&nums,int k)// finding subarray atmost k dstinct ele..
-    {
+    int atMostK(const vector<int>& nums, int k) {
         int n = nums.size();
-        vector<int>v(20001);
-        int ans = 0;
-        int i = 0;
-        for(int j = 0;j<n;j++){
-            if(v[nums[j]] == 0)k--;
-            v[nums[j]]++;
-            // shrinking window if k<0 or distinct elements > k
-            while(i<n && k<0){
-                v[nums[i]]--;
-                if(v[nums[i]] == 0)k++;
-                i++;
+        vector<int> freq(20001, 0); // frequency array to track counts
+        int ans = 0, i = 0;
+        
+        for (int j = 0; j < n; j++) {
+            if (freq[nums[j]] == 0) k--; // found a new distinct element
+            freq[nums[j]]++; // add current element to window
+            
+            // shrink the window if more than k distinct elements
+            while (k < 0) {
+                freq[nums[i]]--; // remove element at left
+                if (freq[nums[i]] == 0) k++; // distinct element fully removed
+                i++; // move left pointer forward
             }
-            ans+=(j-i+1);
+            
+            ans += (j - i + 1); // add all subarrays ending at j
         }
-        return ans;
+        
+        return ans; // return total count
     }
+    
     int subarraysWithKDistinct(vector<int>& nums, int k) {
-        return subarray(nums,k)-subarray(nums,k-1); // number of subarrays having exact distinct ele => k = at most(k)-at most(k-1);
+        // exactly K = atMost(K) - atMost(K-1)
+        return atMostK(nums, k) - atMostK(nums, k - 1);
     }
 };
