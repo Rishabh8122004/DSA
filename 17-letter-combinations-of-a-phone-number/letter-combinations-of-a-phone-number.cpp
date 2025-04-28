@@ -17,9 +17,6 @@ public:
         for(int i = 0;i<4;i++)v[7].push_back(x++);
         for(int i = 0;i<3;i++)v[8].push_back(x++);
         for(int i = 0;i<4;i++)v[9].push_back(x++);
-        // for(int i = 0;i<v.size();i++){
-        //     for(int j = 0;j<v[i].size();j++){cout<<v[i][j]<<"  ";}cout<<endl;
-        // }
         vector<string>ans;
         solve(digits,ans,v,"",0);
         return ans;
