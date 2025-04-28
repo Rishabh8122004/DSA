@@ -1,7 +1,6 @@
 class Solution {
 public:
     void solve(string d,vector<string>&ans,vector<vector<char>>&v,string s,int idx){
-        //if(idx>=d.size())return;
         if(s.size() == d.size()){ans.push_back(s);return;}
         for(int i = 0;i<v[d[idx]-'0'].size();i++){
             solve(d,ans,v,s+v[d[idx]-'0'][i],idx+1);
