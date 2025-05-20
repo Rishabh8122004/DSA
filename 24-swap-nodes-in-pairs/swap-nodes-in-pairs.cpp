@@ -11,7 +11,6 @@
 class Solution {
 public:
     ListNode* swap(ListNode* a,ListNode* b,ListNode* c){
-        cout<<a->val<<"  "<<b->val<<"  "<<(c?c->val:-1)<<endl;
         if(!c || !c->next){
             b->next = a;
             a->next = c;
