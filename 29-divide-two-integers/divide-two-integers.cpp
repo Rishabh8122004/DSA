@@ -1,7 +1,6 @@
 class Solution {
 public:
     long solve(long a,long b){
-        //cout<<a<<"  "<<b<<endl;
         if(a<b || a == 0)return 0;
         int x = 0;
         while((long)((long)b<<(x+1)) <= a ){
