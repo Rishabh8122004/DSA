@@ -4,6 +4,7 @@ public:
         int n = s.size();
         stack<char>t;
         string p = "";
+        p.reserve(n);
         vector<deque<int>> v(26);
         for (int i = 0; i < n; i++) {
             v[s[i] - 'a'].push_back(i);
