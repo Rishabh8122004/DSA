@@ -1,44 +1,26 @@
 class MyQueue {
 public:
-stack<int>s;
-stack<int>st;
+string a = "",b = "";
     MyQueue() {
         
     }
     
     void push(int x) {
-        s.push(x);
+        a+=to_string(x);
     }
     
     int pop() {
-        while(s.size()>1){
-            st.push(s.top());
-            s.pop();
-        }
-        int x = s.top();
-        s.pop();
-        while(st.size()){
-            s.push(st.top());
-            st.pop();
-        }
+        int x = a[0]-'0';
+        a = a.substr(1,a.size());
         return x;
     }
     
     int peek() {
-        while(s.size()>1){
-            st.push(s.top());
-            s.pop();
-        }
-        int x = s.top();
-        while(st.size()){
-            s.push(st.top());
-            st.pop();
-        }
-        return x;
+       return a[0]-'0';
     }
     
     bool empty() {
-        return s.empty();
+        return a.empty();
     }
 };
 
