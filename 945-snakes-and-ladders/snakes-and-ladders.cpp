@@ -19,11 +19,11 @@ public:
             }
             f = !f;
         }
-        queue<vector<int>>q;
+        queue<pair<int,int>>q;
         q.push({1,0});// first position along with it's minimum step(position,steps)
         vector<bool>visited(n*n + 1,false);
         while(!q.empty()){
-            int pos = q.front()[0] , moves = q.front()[1];
+            int pos = q.front().first , moves = q.front().second;
             q.pop();
             if(pos == n*n)return moves;
             for(int dice = 1;dice<=6;dice++){
