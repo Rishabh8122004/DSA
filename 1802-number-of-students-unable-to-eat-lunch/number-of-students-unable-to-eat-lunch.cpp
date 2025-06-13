@@ -2,7 +2,6 @@ class Solution {
 public:
     int countStudents(vector<int>& s, vector<int>& sand) {
         queue<int> q;
-        stack<int> st;
         for (int i = 0; i < s.size(); i++) {
             q.push(s[i]);
         }
