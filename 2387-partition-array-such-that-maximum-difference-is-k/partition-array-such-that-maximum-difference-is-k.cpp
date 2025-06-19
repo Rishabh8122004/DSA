@@ -9,12 +9,8 @@ public:
         int ans = 0;
         for (int i = 0; i < m+1; i++) {
             if(ioe[i] == -1)continue;
-            int limit = min(i+k,m);
-            // while(ioe[limit] == -1){ // not so necessary/// 
-            //     limit--;
-            // }
             ans++; // though we reached our limit means we can't take any more in this range
-            i = limit; // gotta take 'i' to the next range
+            i = min(i+k,m); // gotta take 'i' to the next range
         }
         return ans;
     }
