@@ -3,25 +3,19 @@ public:
     int partitionArray(vector<int>& nums, int k) {
         int n = nums.size();
         sort(nums.begin(), nums.end());
-        vector<bool> flag(n, true);
-        vector<vector<int>> ans;
+        vector<int>ioe(nums[n-1]+1,-1);//index of element
+        for(int i = 0;i<n;i++)ioe[nums[i]] = i;
+        int ans = 0;
         for (int i = 0; i < n; i++) {
-            if (!flag[i])
-                continue;
-            flag[i] = false;
-            vector<int> v;
-            int limit = nums[i] + k;
-            for (int j = i + 1; j < n; j++) {
-                if (!flag[j])
-                    continue;
-                if (nums[j] <= limit && nums[j] >= nums[i]) {
-                    v.push_back(nums[i]);
-                    flag[j] = false;
-                }
-                else break;
+            int limit = min(nums[i]+k,nums[n-1]);
+            int idx = ioe[limit];
+            while(ioe[limit] == -1){
+                limit--;
+                idx = ioe[limit];
             }
-            ans.push_back(v);
+            if(idx>=i)ans++;
+            i = idx;
         }
-        return ans.size();
+        return ans;
     }
 };
