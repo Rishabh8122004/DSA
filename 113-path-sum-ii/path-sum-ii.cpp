@@ -3,7 +3,7 @@ public:
     void solve(TreeNode* root,vector<int>v,vector<vector<int>>&ans,int sum,int &ts){
         if(!root){return;}
         v.push_back(root->val);
-        if(!root->left && !root->right && sum+root->val == ts){ans.push_back(v);}
+        if(sum+root->val == ts && !root->left && !root->right){ans.push_back(v);}
         solve(root->left,v,ans,sum+root->val,ts);
         solve(root->right,v,ans,sum+root->val,ts);
         return;
