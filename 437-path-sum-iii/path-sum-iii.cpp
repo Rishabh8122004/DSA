@@ -1,7 +1,7 @@
 class Solution {
 public:
     void solve(TreeNode* root,int &ans,long long sum,int &ts){
-        if(!root ){return;}
+        if(!root){return;}
         if(sum+root->val == ts){ans++;}
         solve(root->left,ans,sum+root->val,ts);
         solve(root->right,ans,sum+root->val,ts);
