@@ -3,7 +3,8 @@ public:
     bool exist(TreeNode* root, TreeNode* & p){
         if(!root)return false;
         if(root == p)return true;
-        return exist(root->left,p)||exist(root->right,p);
+        if(p->val<root->val)return exist(root->left,p);
+        return exist(root->right,p);
     }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(exist(root->left,p) && exist(root->left,q))return lowestCommonAncestor(root->left,p,q);
