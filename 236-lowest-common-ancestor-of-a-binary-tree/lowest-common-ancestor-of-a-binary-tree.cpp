@@ -1,36 +1,13 @@
 class Solution {
 public:
-    void solve(TreeNode* root, vector<TreeNode*>& vec, TreeNode* &p1, bool &flag) {
-        if (flag || !root) return;
-
-        vec.push_back(root);
-        if (root == p1) {
-            flag = true;
-            return;
-        }
-
-        solve(root->left, vec, p1, flag);
-        solve(root->right, vec, p1, flag);
-
-        if (!flag) vec.pop_back();
+    bool exist(TreeNode* root, TreeNode* & p){
+        if(!root)return false;
+        if(root == p)return true;
+        return exist(root->left,p)||exist(root->right,p);
     }
-
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        vector<TreeNode*> pathP, pathQ;
-        bool flag = false;
-
-        solve(root, pathP, p, flag);
-        flag = false;
-        solve(root, pathQ, q, flag);
-
-        TreeNode* ans = nullptr;
-        int i = 0;
-        while (i < pathP.size() && i < pathQ.size()) {
-            if (pathP[i] == pathQ[i]) {
-                ans = pathP[i];
-            } else break;
-            i++;
-        }
-        return ans;
+        if(exist(root->left,p) && exist(root->left,q))return lowestCommonAncestor(root->left,p,q);
+        else if(exist(root->right,p) && exist(root->right,q))return lowestCommonAncestor(root->right,p,q);
+        else return root;
     }
 };
