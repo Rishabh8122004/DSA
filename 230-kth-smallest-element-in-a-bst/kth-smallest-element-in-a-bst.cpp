@@ -1,16 +1,16 @@
 class Solution {
 public:
-    void solve(TreeNode* root,int & k,vector<int>&ans){
-        if(!root || ans.size() == k)return;
-        if(root->left && ans.size()<k)solve(root->left,k,ans);
-        if(ans.size()<k)ans.push_back(root->val);
-        if(root->right && ans.size()<k)solve(root->right,k,ans);
+    void solve(TreeNode* root,int & k,int &ans){
+        if(!root || k==0)return;
+        if(root->left && k>0)solve(root->left,k,ans);
+        if(k>0)ans=root->val;
+        k--;
+        if(root->right && k>0)solve(root->right,k,ans);
         return;
     }
     int kthSmallest(TreeNode* root, int k) {
-        vector<int> ans;
+        int ans;
         solve(root,k,ans);
-        cout<<ans.size();
-        return ans.back();
+        return ans;
     }
 };
