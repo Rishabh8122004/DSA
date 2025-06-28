@@ -1,24 +1,23 @@
 class Solution {
 public:
-    void traverse(TreeNode* root,vector<int>& v){
+    void traverse(TreeNode* root,vector<TreeNode*>& v){
         if(!root)return;
-        v.push_back(root->val);
         traverse(root->left,v);
+        v.push_back(root);
         traverse(root->right,v);
         return;
     }
-    TreeNode* build(vector<int>&v,int lo,int hi){
+    TreeNode* build(vector<TreeNode*>&v,int lo,int hi){
         if(lo>hi)return NULL;
         int mid = (lo+(hi-lo)/2);
-        TreeNode* root = new TreeNode(v[mid]);
+        TreeNode* root = v[mid];
         root->left = build(v,lo,mid-1);
         root->right = build(v,mid+1,hi);
         return root;
     }
     TreeNode* balanceBST(TreeNode* root) {
-        vector<int>v;
+        vector<TreeNode*>v;
         traverse(root,v);
-        sort(v.begin(),v.end());
         return build(v,0,v.size()-1);
     }
 };
