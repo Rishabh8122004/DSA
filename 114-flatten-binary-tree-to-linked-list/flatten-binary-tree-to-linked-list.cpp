@@ -1,7 +1,7 @@
 class Solution {
 public:
     void flatten(TreeNode* root) {
-        TreeNode* curr = root;
+        TreeNode* curr = root,*l;
         while (curr) {
             if (curr->left) {
                 TreeNode* r = curr->right;
@@ -12,7 +12,7 @@ public:
                 }
                 if (pred->right == NULL) {
                     pred->right = r;
-                    TreeNode* l = curr->left;
+                    l = curr->left;
                     curr->left = NULL;
                     curr = l;
                 }
