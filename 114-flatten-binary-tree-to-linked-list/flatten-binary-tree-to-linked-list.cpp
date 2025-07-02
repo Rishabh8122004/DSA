@@ -18,10 +18,11 @@ public:
                 curr = curr->right;
             }
         }
-        TreeNode* temp = root;
-        while (temp) {
-            temp->left = NULL;
-            temp = temp->right;
+        curr = root;
+        while (curr) {
+            curr->left = NULL;
+            curr = curr->right;
         }
+        return;
     }
 };
