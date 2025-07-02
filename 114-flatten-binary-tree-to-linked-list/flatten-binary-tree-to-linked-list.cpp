@@ -12,16 +12,13 @@ public:
                 }
                 if (pred->right == NULL) {
                     pred->right = r;
-                    curr = curr->left;
+                    TreeNode* l = curr->left;
+                    curr->left = NULL;
+                    curr = l;
                 }
             } else {
                 curr = curr->right;
             }
-        }
-        curr = root;
-        while (curr) {
-            curr->left = NULL;
-            curr = curr->right;
         }
         return;
     }
