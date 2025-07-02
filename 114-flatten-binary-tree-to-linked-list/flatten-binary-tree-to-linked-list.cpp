@@ -1,20 +1,15 @@
 class Solution {
 public:
-    TreeNode* flatthetree(TreeNode* &root){
-        if(!root)return root;
-        TreeNode* l = flatthetree(root->left);
-        TreeNode* r = flatthetree(root->right);
-        root->right = l;
+    void flatten(TreeNode* root) {
+        if(!root)return;
+        flatten(root->left);
+        flatten(root->right);
+        TreeNode* r = root->right;
+        root->right = root->left;
         root->left = NULL;
         TreeNode* temp = root;
         while(temp->right)temp = temp->right;
-        temp->left = NULL;
         temp->right = r;
-        return root;
-    }
-    void flatten(TreeNode* root) {
-        if(!root)return;
-        root = flatthetree(root);
         return;
     }
 };
