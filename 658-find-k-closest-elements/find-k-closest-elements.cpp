@@ -126,13 +126,10 @@ public:
         //     }
         // }
         // max heap solution : 
-        vector<pair<int,int>>dis;
-        for(int i = 0;i<n;i++){
-            dis.push_back({abs(x-arr[i]),arr[i]});
-        }
         priority_queue<pair<int,int>>pq;
         for(int i = 0;i<n;i++){
-            pq.push(dis[i]);
+            pair<int,int>pi = {abs(x-arr[i]),arr[i]};
+            pq.push(pi);
             if(pq.size()>k){
                 pq.pop();
             }
