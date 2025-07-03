@@ -128,7 +128,7 @@ public:
         // max heap solution : 
         priority_queue<pair<int,int>>pq;
         for(int i = 0;i<n;i++){
-            pair<int,int>pi = {abs(x-arr[i]),arr[i]};
+            pair<int,int> pi = {abs(x-arr[i]),arr[i]};
             pq.push(pi);
             if(pq.size()>k){
                 pq.pop();
