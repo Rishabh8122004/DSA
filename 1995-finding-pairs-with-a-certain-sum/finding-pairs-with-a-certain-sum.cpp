@@ -20,6 +20,7 @@ public:
     int count(int tot) {
         int ans = 0;
         for (int num : p) {
+            if(mp.count(tot-num))
             ans += mp[tot - num];
         }
         return ans;
