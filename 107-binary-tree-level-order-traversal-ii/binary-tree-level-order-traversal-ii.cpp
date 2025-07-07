@@ -36,7 +36,7 @@ public:
             }
         }
         ans.push_back(v);
-        int i = 0,j = ans.size()-1;
+        int i = 0,j =  ans.size()-1;
         while(i<j){
             swap(ans[i],ans[j]);
             i++;j--;
