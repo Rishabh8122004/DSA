@@ -1,25 +1,39 @@
+//solving using MORRIS TRAVERSAL : 
 class Solution {
 public:
-    void inorder(TreeNode* root,vector<int>&v){
-        if(!root)return;
-        inorder(root->left,v);
-        v.push_back(root->val);
-        inorder(root->right,v);
-        return;
-    }
-    void fillthetree(TreeNode* root,vector<int>&v,int& idx){
-        if(!root)return;
-        fillthetree(root->left,v,idx);
-        root->val = v[idx++];
-        fillthetree(root->right,v,idx);
-        return;
-    }
     void recoverTree(TreeNode* root) {
-        vector<int>v;
-        inorder(root,v);
-        sort(v.begin(),v.end());
-        int idx = 0;
-        fillthetree(root,v,idx);
-        return;
+        TreeNode* curr = root;
+        TreeNode* prev = NULL,*first = NULL,*second = NULL;
+        while(curr){//inorder traverse
+        if(curr->left){
+            TreeNode* pred = curr->left;
+            while(pred->right && pred->right != curr){
+                pred = pred->right;
+            }
+            if(pred->right == NULL){
+                pred->right = curr;
+                curr = curr->left;
+            }
+            else if(pred->right == curr){
+                pred->right = NULL;
+                if (prev && prev->val > curr->val) {
+                    if (!first) first = prev;
+                    second = curr;
+                }
+                prev = curr;
+                curr = curr->right;
+            }
+        }
+        else{//can't go any left
+            // marking our curr as prev 
+            if (prev && prev->val > curr->val) {
+                if (!first) first = prev;
+                second = curr;
+            }
+            prev = curr;
+            curr = curr->right;
+        }
+       } 
+       if(first && second){swap(first->val,second->val);}
     }
 };
