@@ -12,23 +12,15 @@ public:
             left.push(right.top());
             right.pop();
         }
-        while(right.size() &&  left.top()>right.top()){
+        if(right.size() &&  left.top()>right.top()){
             right.push(left.top());
             left.push(right.top());
             right.pop();left.pop();
         }
         n++;
     }
-    
     double findMedian() {
         if(n%2 == 0) return (left.top()+right.top())/2.0;
         return left.top();
     }
 };
-
-/**
- * Your MedianFinder object will be instantiated and called as such:
- * MedianFinder* obj = new MedianFinder();
- * obj->addNum(num);
- * double param_2 = obj->findMedian();
- */
