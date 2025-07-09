@@ -2,7 +2,9 @@ class MedianFinder {
 public:
     priority_queue<int>left;//stores all the left elements from median
     priority_queue<int,vector<int>,greater<int>>right;//stores all the right elements from the median
+    int n;
     MedianFinder() {
+        n = 0;
     }
     void addNum(int num) {
         right.push(num);
@@ -15,10 +17,11 @@ public:
             left.push(right.top());
             right.pop();left.pop();
         }
+        n++;
     }
     
     double findMedian() {
-        if((left.size()+right.size())%2 == 0) return (left.top()+right.top())/2.0;
+        if(n%2 == 0) return (left.top()+right.top())/2.0;
         return left.top();
     }
 };
