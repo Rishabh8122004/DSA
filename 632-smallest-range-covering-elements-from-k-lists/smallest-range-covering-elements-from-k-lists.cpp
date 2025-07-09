@@ -11,9 +11,9 @@ public:
         }
         start = pq.top().first;
         end = mx;
-        while(pq.top().second.second < nums[pq.top().second.first].size()-1){
-            int r = pq.top().second.first; // row of minimum element in heap
-            int c = pq.top().second.second;// col of minimum element in heap
+        int r = pq.top().second.first; // row of minimum element in heap
+        int c = pq.top().second.second;// col of minimum element in heap
+        while(c < nums[r].size()-1){
             pq.pop();
             pq.push({nums[r][c+1],{r,c+1}});
             mx = max(mx,nums[r][c+1]);
@@ -21,6 +21,8 @@ public:
                 start = pq.top().first;
                 end = mx;
             }
+            r = pq.top().second.first; // row of minimum element in heap
+            c = pq.top().second.second;// col of minimum element in heap
         }
         return {start,end};
     }
