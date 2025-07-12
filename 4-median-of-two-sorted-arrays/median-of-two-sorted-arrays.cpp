@@ -1,36 +1,39 @@
 class Solution {
 public:
-    double findMedianSortedArrays(vector<int>& n1, vector<int>& n2) {
-        double ans;
-        vector<int> v;
-        int i = 0, j = 0;
-        while (i < n1.size() && j < n2.size()) {
-            if (n1[i] <= n2[j]) {
-                v.push_back(n1[i]);
-                i++;
-            } else {
-                v.push_back(n2[j]);
-                j++;
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        priority_queue<int>q; // max
+        priority_queue<int,vector<int>,greater<int>>p; // min
+        for(int i = 0;i<nums1.size();i++){
+            p.push(nums1[i]);
+            if(q.size()<p.size()){
+                q.push(p.top());
+                p.pop();
+            }
+            while(q.top()>p.top()){
+                int x = q.top();
+                q.pop();
+                q.push(p.top());
+                p.pop();
+                p.push(x);
             }
         }
-        if (j >= n2.size()) {
-            while (i < n1.size()) {
-                v.push_back(n1[i]);
-                i++;
+        for(int i = 0;i<nums2.size();i++){
+            p.push(nums2[i]);
+            if(q.size()<p.size()){
+                q.push(p.top());
+                p.pop();
+            }
+            while(q.top()>p.top()){
+                int x = q.top();
+                q.pop();
+                q.push(p.top());
+                p.pop();
+                p.push(x);
             }
         }
-        if (i >= n1.size()) {
-            while (j < n2.size()) {
-                v.push_back(n2[j]);
-                j++;
-            }
+        if(p.size() == q.size()){
+            return (p.top()+q.top())/2.0;
         }
-        int n = v.size();
-        if (n % 2 == 0) {
-            ans = ((double)(v[n / 2] + v[(n / 2) - 1]) / 2);
-        } else {
-            ans = v[n / 2];
-        }
-        return ans;
+        return q.top();
     }
 };
