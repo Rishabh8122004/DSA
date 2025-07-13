@@ -15,7 +15,7 @@ public:
         for (int e : d)
             mp[e]++;
         for (int i = 100; i < 1000; i+=2) { // possible range of outcomes
-            if ( i%2 == 0 && isvalid(i, mp)) {
+            if (isvalid(i, mp)) {
                 ans.push_back(i);
             }
         }
