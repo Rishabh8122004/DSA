@@ -13,11 +13,3 @@ public:
         return pairs;
     }
 };
-static const int init = [] {
-    struct ___ { static void _() { std::ofstream("display_runtime.txt") << 0 << '\n'; } };    
-    std::atexit(&___::_);
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    return 0;
-}();
