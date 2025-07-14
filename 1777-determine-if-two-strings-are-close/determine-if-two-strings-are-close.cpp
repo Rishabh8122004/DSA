@@ -10,7 +10,6 @@ public:
         for(int i = 0;i<w2.size();i++){
             m2[w2[i]]++;
         }
-        unordered_map<int,pair<char,char>>freq;
         // a character schould be in both strings
         for(auto p:m1){
             if(m2.find(p.first) == m2.end())return false; // character not found in second string
