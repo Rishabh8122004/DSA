@@ -6,9 +6,7 @@ public:
         for(int i = 0;i<strs.size();i++){
             string s = strs[i];
             sort(s.begin(),s.end());
-            vector<string>v = mp[s];
-            v.push_back(strs[i]);
-            mp[s] = v;
+            mp[s].push_back(strs[i]);
         }
         vector<vector<string>>ans; // no of string vectors
         for(auto p: mp){
