@@ -6,7 +6,7 @@ public:
         int a = 1;
         int b = 2;
         int sum;
-        for(int i = 0;i<n-2;i++)
+        for(int i = 2;i<n;i++)
         {
             sum = a+b;
             a=b;
