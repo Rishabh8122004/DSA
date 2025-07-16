@@ -24,7 +24,6 @@ public:
             }
             else len++;
         }
-        cout<<getsubarray(len);
         return ans+getsubarray(len);
     }
 };
