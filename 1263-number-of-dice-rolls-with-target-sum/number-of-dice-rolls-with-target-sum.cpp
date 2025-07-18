@@ -12,7 +12,6 @@ public:
                     dp[i][j]%=a;
                     K++;
                 }
-                dp[i][j]%=a;
             }
         }
         return dp[n][target];
