@@ -4,10 +4,10 @@ public:
         if(k == 0 || i>=p.size())return 0;
         if(dp[i][k][buy] != INT_MIN)return dp[i][k][buy];
         int ans = 0;
-        if(buy){
+        if(buy){ // we can buy at our own will..
             ans += max(solve(p,i+1,k,false,dp)-p[i],solve(p,i+1,k,true,dp));
         }
-        if(!buy){
+        if(!buy){// we can not buy but we can sell at our will.. 
             ans += max(solve(p,i+1,k-1,true,dp)+p[i],solve(p,i+1,k,false,dp));
         }
         dp[i][k][buy] = ans;
