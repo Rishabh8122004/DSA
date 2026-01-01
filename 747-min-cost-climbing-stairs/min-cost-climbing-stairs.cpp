@@ -1,20 +1,15 @@
 class Solution {
 public:
-    int helper(vector<int>&cost,int idx,vector<int>&dp){
-        if(idx<=1)return cost[idx];
-        if(dp[idx] != -1)return dp[idx];
-        return dp[idx] = cost[idx] + min(helper(cost,idx-1,dp),helper(cost,idx-2,dp));
+    int solve(vector<int>&dp,vector<int>&cost,int n){
+        if(n <= 1)return 0;
+        if(dp[n] != INT_MAX)return dp[n];
+        dp[n] = 0;
+        return dp[n]+=min(solve(dp,cost,n-1)+cost[n-1],solve(dp,cost,n-2)+cost[n-2]);
     }
     int minCostClimbingStairs(vector<int>& cost) {
-        int n = cost.size();
-        vector<int>dp(n,-1);
-        int sum = 0;
-        return min(helper(cost,n-1,dp),helper(cost,n-2,dp));
-        // dp[0] = cost[0];
-        // dp[1] = cost[1];
-        // for(int i = 2;i<n;i++){
-        //     dp[i] = cost[i] + min(dp[i-1],dp[i-2]);
-        // }
-        // return min(dp[n-1],dp[n-2]);
+        vector<int>dp(1001,INT_MAX);
+        int n;
+        n = cost.size();
+        return solve(dp,cost,n);
     }
 };
