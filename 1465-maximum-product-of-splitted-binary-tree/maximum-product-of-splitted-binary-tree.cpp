@@ -14,10 +14,8 @@ public:
     int MOD = 1000000007;
     int getsum(TreeNode* &root){
         if(!root)return 0;
-        int x = root->val;
-        x+=getsum(root->left);
-        x+=getsum(root->right);
-        root->val = x;
+        root->val+=getsum(root->left);
+        root->val+=getsum(root->right);
         return root->val;
     }
     void solve(TreeNode* root,long long &ans,long long &totalsum){
