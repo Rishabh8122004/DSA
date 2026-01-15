@@ -1,33 +1,34 @@
 class Solution {
 public:
-    bool solve(int start, int bucketNum, int currSum,
+    bool solve(int i, int bucketnum, int bucketsum,
                vector<int>& nums, vector<bool>& used,
-               int reqSum, int k) {
+               int reqsum, int k) {
 
         // 🎯 all buckets formed
-        if (bucketNum == k) return true;
+        if (bucketnum == k) return true;
 
-        // 🔁 move to next bucket
-        if (currSum == reqSum)
-            return solve(0, bucketNum + 1, 0, nums, used, reqSum, k);
+        // 🔁 bucket completed → start next bucket
+        if (bucketsum == reqsum)
+            return solve(0, bucketnum + 1, 0, nums, used, reqsum, k);
 
-        for (int i = start; i < nums.size(); i++) {
-            if (used[i]) continue;
-            if (currSum + nums[i] > reqSum) continue;
+        for (int idx = i; idx < nums.size(); idx++) {
 
-            used[i] = true;
-            if (solve(i + 1, bucketNum, currSum + nums[i],
-                      nums, used, reqSum, k))
+            if (used[idx]) continue;
+            if (bucketsum + nums[idx] > reqsum) continue;
+
+            used[idx] = true;
+            if (solve(idx + 1, bucketnum, bucketsum + nums[idx],
+                      nums, used, reqsum, k))
                 return true;
-            used[i] = false;
+            used[idx] = false;
 
-            // 🔑 PRUNING (very important)
-            if (currSum == 0) return false;
-            if (currSum + nums[i] == reqSum) return false;
+            // 🔑 pruning (very important)
+            if (bucketsum == 0) return false;
+            if (bucketsum + nums[idx] == reqsum) return false;
 
-            // skip duplicates
-            while (i + 1 < nums.size() && nums[i] == nums[i + 1])
-                i++;
+            // avoid duplicates
+            while (idx + 1 < nums.size() && nums[idx] == nums[idx + 1])
+                idx++;
         }
         return false;
     }
@@ -37,7 +38,7 @@ public:
         for (int x : nums) sum += x;
         if (sum % k != 0) return false;
 
-        sort(nums.rbegin(), nums.rend());  // 🔑
+        sort(nums.rbegin(), nums.rend());  // 🔑 early pruning
         if (nums[0] > sum / k) return false;
 
         vector<bool> used(nums.size(), false);
