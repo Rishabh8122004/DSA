@@ -2,7 +2,7 @@ class Solution {
 public:
     long long largestSquareArea(vector<vector<int>>& bl, vector<vector<int>>& tr) {
         int n = bl.size();
-        int l,b,ans = 0;;
+        int l,b,ans = 0;
         for(int i = 0;i<n;i++){
             for(int j = i+1;j<n;j++){
                 if(j == i)continue;
