@@ -10,7 +10,6 @@ public:
         for(int i = 0;i<nums.size();i++){
             sum+=get_ceil_value(nums[i],mid);
         }
-        cout<<mid<<"="<<sum<<endl;
         return sum;
     }
     int smallestDivisor(vector<int>& nums, int threshold) {
