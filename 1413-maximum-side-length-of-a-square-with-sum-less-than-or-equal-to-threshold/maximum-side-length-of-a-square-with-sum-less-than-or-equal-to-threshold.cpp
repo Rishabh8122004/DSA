@@ -4,7 +4,6 @@ public:
         int sum = INT_MAX,a,temp = 0;
         for(int i = 0;i+k-1<r.size();i++){
             for(int j = 0;j+k-1<r[0].size();j++){
-                if(sum<=threshold)return sum;
                 temp = 0;
                 a = i;
                 while(a<=i+k-1){
@@ -12,6 +11,7 @@ public:
                     a++;
                 }
                 sum = min(sum,temp);
+                if(sum<=threshold)return sum;
             }
         }
         return sum;
