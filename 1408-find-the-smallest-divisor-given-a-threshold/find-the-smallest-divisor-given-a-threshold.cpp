@@ -1,14 +1,10 @@
 class Solution {
 public:
-    int get_ceil_value(int x,int& mid){
-        if(x<mid)return 1;
-        if(x%mid == 0)return x/mid;
-        return (x/mid) + 1;
-    }
     int isvalid_divisor(int &mid,vector<int>&nums){
         int sum = 0;
         for(int i = 0;i<nums.size();i++){
-            sum+=get_ceil_value(nums[i],mid);
+            if(nums[i]%mid == 0)sum+=(nums[i]/mid);
+            else sum+=(nums[i]/mid)+1;
         }
         return sum;
     }
