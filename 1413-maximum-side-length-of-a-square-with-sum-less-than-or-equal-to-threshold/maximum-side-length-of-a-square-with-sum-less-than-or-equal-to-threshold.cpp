@@ -1,9 +1,10 @@
 class Solution {
 public:
-    int get_minsum(int &k,vector<vector<int>>&r){
+    int get_minsum(int &k,vector<vector<int>>&r,int &threshold){
         int sum = INT_MAX,a,temp = 0;
         for(int i = 0;i+k-1<r.size();i++){
             for(int j = 0;j+k-1<r[0].size();j++){
+                if(sum<=threshold)return sum;
                 temp = 0;
                 a = i;
                 while(a<=i+k-1){
@@ -25,7 +26,7 @@ public:
         }
         int k = 1;
         while(k <= min(m,n)){
-            if(get_minsum(k,r) > threshold)return k-1;
+            if(get_minsum(k,r,threshold) > threshold)return k-1;
             k++;
         }
         return k-1;
