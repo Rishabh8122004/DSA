@@ -20,6 +20,7 @@ public:
             }
             max_in_interval.push_back(x);
         }
+        if(1LL*m*k == b.size())return hi;
         int ans = hi;
         while(lo<=hi){
             int mid = lo+(hi-lo)/2;
