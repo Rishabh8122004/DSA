@@ -32,10 +32,6 @@ public:
         int ans = 0;
         while(!is_sorted(nums)){
             nums = solve(nums,ans);
-            for(int i = 0;i<nums.size();i++){
-                cout<<nums[i]<<" ";
-            }
-            cout<<endl;
         }
         return ans;
     }
