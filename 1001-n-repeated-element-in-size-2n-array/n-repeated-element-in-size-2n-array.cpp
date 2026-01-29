@@ -10,7 +10,6 @@ public:
                 i++;
                 if(i == n*2)break;
             }
-            cout<<i-j<<" ";
             if(i-j == n)return nums[j];
             i--;
         }
