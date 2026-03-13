@@ -2,12 +2,8 @@ class Solution {
 public:
     bool is_valid(long mid,int h,vector<int>&wt){
         for(int i = 0;i<wt.size();i++){
-            int j = 1;
-            while(wt[i]*((1LL*j*(j+1))/2)<=mid){
-                if(h<=0)return  true;
-                h--;
-                j++;
-            }
+            long long j = (-1 + sqrt(1 + 8 * mid / wt[i])) / 2;
+            h -= j;
             if(h<=0)return  true;
         }
         return h <= 0;
