@@ -21,7 +21,6 @@ public:
             j++;
         }
         ans = min(ans, nos);
-        cout<<ans<<" ";
         i = 1;
         while(i<n){
             if(nums[i-1] == 0){nos--;}
@@ -30,7 +29,6 @@ public:
             }
             i++;j++;
             ans = min(ans,nos);
-            cout<<ans<<" ";
         }
         return ans;
     }
