@@ -10,14 +10,11 @@ public:
         if (noo <= 1 || noo >= n - 1) return 0; // only one '1' or no '1'.
         int i = 0, j = 0;
         int ans = n; // a random maximum answer
-        int len = 0; // number of ones in current window
         int nos = 0; // number of swaps
-        while (len < noo) {
+        while (j < noo) {
             if (nums[j % n] == 0) {
-                if (noo - len > 0)
-                    nos++;
+                nos++;
             }
-            len++;
             j++;
         }
         ans = min(ans, nos);
