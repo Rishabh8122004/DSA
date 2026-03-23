@@ -1,6 +1,6 @@
 class Solution {
 public:
-    static constexpr long long MOD = 1000000007LL;
+    long long MOD = 1000000007LL;
 
     void solve(vector<vector<int>>& g, int i, int j,
                vector<vector<vector<long long>>>& dp,
