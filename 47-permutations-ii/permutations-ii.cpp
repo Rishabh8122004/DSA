@@ -1,28 +1,44 @@
 class Solution {
 public:
-    void solve(vector<int>& nums,set<vector<int>>& ans,int i){
-        //base case
-        if(i >= nums.size()) {ans.insert(nums); return;}
-        // recursion :
-        // swaing current index with all the upcoming index recursively..
-        for(int j = i;j<nums.size();j++){
-            if(j>i && nums[j] == nums[j-1])continue;
-            swap(nums[i],nums[j]);
-            solve(nums,ans,i+1);
-            //backtracking : making the vector as it was before swap to generate some new permutations
-            swap(nums[i],nums[j]);
+    void reverse(vector<int>& nums, int i, int j) {
+        while (i < j) {
+            swap(nums[i], nums[j]);
+            i++;
+            j--;
         }
-        return;
+    }
+    void nextPermutation(vector<int>& nums) {
+
+        int n = nums.size();
+        int pivot = -1;
+        for (int i = n - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                pivot = i;
+                break;
+            }
+        }
+        if (pivot == -1) {
+            reverse(nums, 0, n - 1);
+            return;
+        }
+        reverse(nums, pivot + 1, n - 1);
+        for (int i = (pivot + 1); i < n; i++) {
+            if (nums[pivot] < nums[i]) {
+                swap(nums[pivot], nums[i]);
+                break;
+            }
+        }
     }
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        set<vector<int>> ans;
-        vector<vector<int>>final_ans;
-        solve(nums,ans,0); // 0 -> index to begin with
-
-        for(auto x:ans){
-            final_ans.push_back(x);
+        sort(nums.begin(), nums.end());
+        vector<int> v = nums;
+        vector<vector<int>> ans;
+        ans.push_back(v);
+        nextPermutation(v);
+        while (v != nums) {
+            ans.push_back(v);
+            nextPermutation(v);
         }
-        return final_ans;
+        return ans;
     }
 };
