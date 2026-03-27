@@ -8,15 +8,12 @@ public:
                 if(i%2 == 0){
                     int idx = j-k;
                     if(mat[i][(idx<0?(m+idx):idx)] != mat[i][j]) return false;
-                    cout<<mat[i][(idx<0?(m+idx):idx)]<<" "<<mat[i][j]<<"   "; 
                 }
                 else{
                     int idx = j+k;
                     if(mat[i][(idx>=m?(idx%m):idx)] != mat[i][j])return false;
-                    cout<<mat[i][(idx>=m?(idx%m):idx)]<<" "<<mat[i][j]<<"   "; 
                 }
             }
-            cout<<endl;
         }
         return true;
     }
