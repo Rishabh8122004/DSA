@@ -2,22 +2,20 @@ class Solution {
 public:
     bool checkStrings(string s1, string s2) {
         int n = s1.size();
-        string e1 = "",o1 = "";
-        string e2 = "",o2 = "";
+        vector<int>even(26,0),odd(26,0);
         for(int i = 0;i<n;i++){
             if(i%2 == 0){
-                e1+=s1[i];
-                e2+=s2[i];
+                even[s1[i]-'a']++;
+                even[s2[i]-'a']--;
             }
             else{
-                o1+=s1[i];
-                o2+=s2[i];
+                odd[s1[i]-'a']++;
+                odd[s2[i]-'a']--;
             }
         }
-        sort(e1.begin(),e1.end());
-        sort(o1.begin(),o1.end());
-        sort(e2.begin(),e2.end());
-        sort(o2.begin(),o2.end());
-        return (e1 == e2) && (o1 == o2);
+        for(int i = 0;i<26;i++){
+            if(even[i] != 0 || odd[i] != 0)return false;
+        }
+        return true;
     }
 };
