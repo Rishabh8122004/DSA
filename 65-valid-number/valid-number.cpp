@@ -29,7 +29,6 @@ public:
             }
             else return false;
         }
-        //if(s[0] == '0' && (type != "exp" && type != "sign" && type != ""))return true;
         return (type != "exp" && type != "sign" && type != "" && !(!digit && type == "dot"));
     }
     bool isNumber(string s) {
