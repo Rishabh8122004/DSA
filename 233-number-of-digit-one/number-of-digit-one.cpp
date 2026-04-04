@@ -3,9 +3,9 @@ public:
     int countDigitOne(int n) {
         int count = 0;
         for (long i = 1; i <= n; i *= 10) { // i -> position
-            long digit = (n/i)%10;
-            long left = n/(i*10); // left hand side value i.e if num = 3 in the number 14357, left = 14
-            long right = n - ((n/i)*i); // right hand side value , i.e. if num = 3 in 14357 ,  right = 57
+            long digit = (n/i)%10; // if position = 3 in the number  14567, digit = 5 
+            long left = n/(i*10); // left hand side value i.e if digit = 3 in the number 14357, left = 14
+            long right = n%i; // right hand side value , i.e. if digit = 3 in 14357 ,  right = 57
 
             if (i == 1) {                  // first position i.e _ _ _ _ X
                 if(digit == 0){
