@@ -10,8 +10,8 @@ public:
             }
         }
         vector<int>ans;
-        for(auto it :mp){
-            if(it.second >=2)ans.push_back(it.first);
+        for(auto x :mp){
+            if(x.second >=2)ans.push_back(x.first);
         }
         return ans;
     }
