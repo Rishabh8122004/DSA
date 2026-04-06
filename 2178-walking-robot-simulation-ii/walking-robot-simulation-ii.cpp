@@ -22,11 +22,8 @@ public:
     }
 
     void step(int num) {
-        bool f = false;
-        if (num > 0)
-            f = true;
         num %= (2 * ((w - 1) + (h - 1))); // parametre
-        if (num == 0 && f) {
+        if (num == 0) { // if num % parametre = 0 , the direction must get affected
             if (x == 0 && y == 0) D = 'S';
             else if (x == w - 1 && y == 0) D = 'E';
             else if (x == w - 1 && y == h - 1) D = 'N';
