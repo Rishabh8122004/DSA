@@ -18,10 +18,10 @@ public:
         int i = 0;
         int ans = 0;
         while(i<n){
-            if(w[i] == 'a'){
-                auto len = get_beautiful_string_lenght(w,i);
-                i+=len.first-1;
-                if(len.second == 1)ans = max(ans,len.first);
+            if(w[i] == 'a'){// a beautifull substring always starts with 'a'
+                auto len = get_beautiful_string_lenght(w,i);// this will return a pair (len,valid or not), if len.seocnd == 1 means beautifull substring , if len.second == -1 , means not so beautifull... 
+                i+=len.first-1; // increment i no matter what..
+                if(len.second == 1)ans = max(ans,len.first); // updating answer if the substring was beautifull
             }
             i++;
         }
