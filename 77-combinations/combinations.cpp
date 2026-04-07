@@ -2,6 +2,7 @@ class Solution {
 public:
     vector<int>v;
     void solve(vector<vector<int>>&ans,int i,int &n,int &k){
+        if(k-v.size() > n-i+1)return;
         if(i>n){
             if(v.size() == k)ans.push_back(v);
             return;
