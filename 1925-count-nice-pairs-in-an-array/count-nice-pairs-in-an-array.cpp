@@ -18,7 +18,8 @@ public:
         for(auto p:val){
             int x = p.first;
             int y = p.second;
-            mp[x-rev(x)]+=y;
+            x-=rev(x);
+            mp[x]+=y;
         }
         for(auto p:mp){
             if(p.second>1)
