@@ -11,8 +11,8 @@ public:
     }
     int countNicePairs(vector<int>& nums) {
         int n = nums.size();
-        map<int,int>val; //distinct elements
-        map<int,int>mp;
+        unordered_map<int,int>val; //distinct elements
+        unordered_map<int,int>mp;
         long ans = 0;
         for(int i = 0;i<n;i++)val[nums[i]]++;
         for(auto p:val){
