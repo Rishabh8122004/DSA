@@ -7,6 +7,7 @@ public:
         while(i<n){
             if(j<i)j = i;
             while(j+1<n2.size() && n2[j+1]>=n1[i])j++;
+            if(j == n2.size()-1 && n2[j]<n1[i])break;
             ans = max(ans,abs(j-i));
             i++;
         }
