@@ -1,21 +1,14 @@
 class Solution {
 public:
-    int maxDistance(vector<int>& nums1, vector<int>& nums2) {
-        int lo = nums2.size()-1,hi = 0;
+    int maxDistance(vector<int>& n1, vector<int>& n2) {
         int ans = 0;
-        int n = min(nums1.size(),nums2.size());
-        for(int i = 0;i<n;i++){
-            if(nums1[i]>nums2[i])continue;
-            hi = i;
-            lo = nums2.size()-1;
-            while(lo>=hi){ // binary search for a non-increasing array
-                int mid = hi+(lo-hi)/2;
-                if(nums2[mid] >= nums1[i]){
-                    ans = max(ans,abs(mid-i));
-                    hi = mid+1;
-                }
-                else lo = mid-1;
-            }
+        int i = 0,j = 0;
+        int n = min(n1.size(),n2.size());
+        while(i<n){
+            if(j<i)j = i;
+            while(j+1<n2.size() && n2[j+1]>=n1[i])j++;
+            ans = max(ans,abs(j-i));
+            i++;
         }
         return ans;
     }
