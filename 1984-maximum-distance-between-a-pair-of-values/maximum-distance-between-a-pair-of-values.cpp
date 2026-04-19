@@ -3,8 +3,8 @@ public:
     int maxDistance(vector<int>& nums1, vector<int>& nums2) {
         int lo = nums2.size()-1,hi = 0;
         int ans = 0;
-        for(int i = 0;i<nums1.size();i++){
-            if(i<nums2.size() && nums1[i]>nums2[i])continue;
+        for(int i = 0;i<min(nums1.size(),nums2.size());i++){
+            if(nums1[i]>nums2[i])continue;
             hi = i;
             lo = nums2.size()-1;
             while(lo>=hi){ // binary search for a non-increasing array
