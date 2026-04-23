@@ -12,10 +12,10 @@ public:
             for(auto j : v){
                 sum += j;
             }
-            long long left_sum = 0;
+            long long left_sum = 0,right_sum = 0;
             int m = v.size();
             for(int i = 0;i<m;i++){
-                long long right_sum = sum-left_sum-v[i];
+                right_sum = sum-left_sum-v[i];
 
                 long long left = 1LL * v[i] * i - left_sum;
                 long long right = right_sum - 1LL * v[i] * (m-i-1); 
