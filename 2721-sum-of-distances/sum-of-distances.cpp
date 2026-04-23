@@ -12,13 +12,13 @@ public:
             for(auto j : v){
                 sum += j;
             }
-            long long left_sum = 0,right_sum = 0;
+            long long left_sum = 0,right_sum = 0,left,right;
             int m = v.size();
             for(int i = 0;i<m;i++){
                 right_sum = sum-left_sum-v[i];
 
-                long long left = 1LL * v[i] * i - left_sum;
-                long long right = right_sum - 1LL * v[i] * (m-i-1); 
+                left = 1LL * v[i] * i - left_sum;
+                right = right_sum - 1LL * v[i] * (m-i-1); 
 
                 ans[v[i]] = left+right;
 
