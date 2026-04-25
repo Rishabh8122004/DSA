@@ -1,5 +1,19 @@
 class Solution {
 public:
+    int get_val( vector<long long>& pos,int idx,int target){
+        int n = pos.size()/2;
+        int lo = idx+1,hi = idx + n;
+        int ans = idx+n;
+        while(lo<=hi){
+            int mid = lo+(hi-lo)/2;
+            if(pos[mid] >= target){
+                ans = mid;
+                hi = mid-1;
+            }
+            else lo = mid+1;
+        }
+        return ans;
+    }
     bool is_valid(int& mid, vector<long long>& pos, int& k, long long& per) {
         int n = pos.size() / 2;
 
@@ -12,7 +26,7 @@ public:
                 long long target = last + mid;
                 auto it = lower_bound(begin(pos) + idx + 1,begin(pos) + i + n,target);
                 if(it == begin(pos) + i + n) break;
-                idx = it - begin(pos);
+                idx = it-begin(pos);
                 last = pos[idx];
                 count++;
             }
