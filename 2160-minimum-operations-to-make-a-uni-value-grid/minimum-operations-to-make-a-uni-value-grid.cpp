@@ -7,17 +7,14 @@ public:
                 ans = max(ans,grid[i][j]);
             }
         }
-        vector<pair<int,bool>> v(ans+1,{0,false}); // making a vector which will store if the index is present in grid as an element , to reduce complexity and avoid sorting function
+        vector<int> ele; // making a vector storing all the element present in grid but in sorted manner
         for(int i = 0;i<grid.size();i++){
             for(int j = 0;j<grid[i].size();j++){
-                v[grid[i][j]].second = true;
-                v[grid[i][j]].first++;
-
+                ele.push_back(grid[i][j]);
             }
         }
         ans = 0;
-        vector<int> ele; // making a vector storing all the element present in grid but in sorted manner
-        for(int i = 0;i<v.size();i++){if(v[i].second){while(v[i].first--){ele.push_back(i);}}}
+        sort(ele.begin(),ele.end());
         int i = ele.size()/2;// middle element
             bool flag = true; 
             for(int j = 0;j<grid.size();j++){ // iterating through grid and calculating the operation require to make the current element equal to middle element.
