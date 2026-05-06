@@ -8,9 +8,9 @@ public:
                 if(g[i][j] == '#'){
                     int k = j;
                     while(k+1<m && g[i][k+1] == '.'){
-                        swap(g[i][k],g[i][k+1]);
                         k++;
                     }
+                    swap(g[i][j],g[i][k]);
                 }
             }
         }
