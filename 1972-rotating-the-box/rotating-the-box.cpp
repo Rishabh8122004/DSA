@@ -9,7 +9,7 @@ public:
             for(int j = m-1;j>=0;j--){
                 if(g[i][j] == '*'){
                    ans[j][n-i-1] = g[i][j]; // an obstacle position won't change
-                   k = j-1; // obstacle is a something which can hold stones above it.. k = j-1.
+                   k = j-1; // obstacle is something which can hold stones above it.. k = j-1.
                 }
                 else if(g[i][j] == '#'){
                     ans[k][n-i-1] = g[i][j]; // only move k to the left when being placed a stone.
