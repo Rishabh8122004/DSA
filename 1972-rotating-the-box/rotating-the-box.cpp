@@ -16,11 +16,9 @@ public:
         }
         vector<vector<char>>ans(m,vector<char>(n,'.'));
         for(int j = 0;j<m;j++){
-            vector<char>v(n);
             for(int i = n-1;i>=0;i--){
-                v[n-1-i] = g[i][j];
+                ans[j][n-1-i] = g[i][j];
             }
-            ans[j] = v;
         }
         return ans;
     }
