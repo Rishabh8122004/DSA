@@ -3,7 +3,7 @@ public:
     vector<int> maxValue(vector<int>& nums) {
         int n = nums.size();
         vector<int>mini(n);
-        vector<int>maxi = nums;
+        vector<int>maxi(n);
         int m = nums[n-1];
         for(int i = n-1;i>=0;i--){
             if(m>nums[i]){
