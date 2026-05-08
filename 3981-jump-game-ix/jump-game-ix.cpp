@@ -19,16 +19,15 @@ public:
             }
             maxi[i] = m;
         }
-        vector<int>ans(n);
         for(int i = n-1;i>=0;i--){
             m = maxi[i];
             if(i<n-1){
                 if(m > mini[i+1].first){
-                    m = ans[i+1];
+                    m = nums[i+1];
                 }
             }
-            ans[i] = m;
+            nums[i] = m;
         }
-        return ans;
+        return nums;
     }
 };
