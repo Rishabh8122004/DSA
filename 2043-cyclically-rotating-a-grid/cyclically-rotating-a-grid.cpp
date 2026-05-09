@@ -28,7 +28,6 @@ public:
                 q.push_back(g[j][i]);
                 i--;
             }
-            cout << q.size() << "  ";
             // rotating
             int K = k % q.size();
             while (K--) {
