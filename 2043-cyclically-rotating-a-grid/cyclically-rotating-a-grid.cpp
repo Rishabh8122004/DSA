@@ -3,11 +3,12 @@ public:
     vector<vector<int>> rotateGrid(vector<vector<int>>& g, int k) {
         int n = g.size();
         int m = g[0].size();
-        int l = 0, r = m - 1, u = 0, d = n - 1,i,j,K;
+        int l = 0, r = m - 1, u = 0, d = n - 1, i, j, K;
         deque<int> q;
         while ((l <= r - 1) && (u <= d - 1)) {
             // filling the queue
-            i = l; j = u;
+            i = l;
+            j = u;
 
             while (j < d) { // left
                 q.push_back(g[j][i]);
