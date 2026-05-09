@@ -4,7 +4,7 @@ public:
         int n = g.size();
         int m = g[0].size();
         int l = 0, r = m - 1, u = 0, d = n - 1, i, j, K;
-        vector<int>q;
+        vector<int> q;
         while ((l <= r - 1) && (u <= d - 1)) {
             // filling the queue
             i = l;
@@ -31,30 +31,30 @@ public:
             }
             // rotating
             K = k % q.size();
-            int idx = 0,len = q.size();
+            int idx = 0, len = q.size();
             // filling the grid
             i = l, j = u;
 
             while (j < d) {
-                g[j][i] = q[(idx-K + len)%len];
+                g[j][i] = q[(idx - K + len) % len];
                 idx++;
                 j++;
             }
 
             while (i < r) {
-                g[j][i] = q[(idx-K + len)%len];
+                g[j][i] = q[(idx - K + len) % len];
                 idx++;
                 i++;
             }
 
             while (j > u) {
-                g[j][i] = q[(idx-K + len)%len];
+                g[j][i] = q[(idx - K + len) % len];
                 idx++;
                 j--;
             }
 
             while (i > l) {
-                g[j][i] = q[(idx-K + len)%len];
+                g[j][i] = q[(idx - K + len) % len];
                 idx++;
                 i--;
             }
