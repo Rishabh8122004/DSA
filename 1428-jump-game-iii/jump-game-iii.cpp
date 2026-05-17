@@ -1,20 +1,27 @@
 class Solution {
 public:
-    bool solve(vector<int>& arr, int start, vector<bool>& v) {
-        if (start > arr.size() - 1 || start < 0) // Out of bounds
-            return false;
-        if (arr[start] == 0) // Found target
-            return true;
-        if (v[start]) return false; // Already visited, avoid cycles
-
-        v[start] = true; // Mark as visited
-
-        // Try jumping forward and backward
-        return solve(arr, start + arr[start], v) || solve(arr, start - arr[start], v);
+    int vis[50005];
+    bool solve(int start,vector<unordered_map<int,int>>&graph,vector<int>& arr){
+        if(vis[start] == 1)return false;
+        vis[start] = 1;
+        if(arr[start] == 0)return true;
+        for(auto & p: graph[start]){
+            if(arr[p.first] == 0)return true;
+            if(solve(p.first,graph,arr))return true;
+        }
+        return false;
     }
-
     bool canReach(vector<int>& arr, int start) {
-        vector<bool> v(arr.size(), false); // Visited array
-        return solve(arr, start, v);
+        vector<unordered_map<int,int>>graph(arr.size()+1);// connected indices
+        memset(vis,0,sizeof(vis));//visited array
+        for(int i = 0;i<arr.size();i++){
+            if(i-arr[i]>=0){
+                graph[i][i-arr[i]] = 1;
+            }
+            if(i+arr[i] < arr.size()){
+               graph[i][i+arr[i]] = 1;
+            }
+        }
+        return solve(start,graph,arr);
     }
 };
