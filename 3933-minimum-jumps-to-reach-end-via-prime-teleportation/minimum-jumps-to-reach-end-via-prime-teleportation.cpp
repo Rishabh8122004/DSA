@@ -45,17 +45,16 @@ public:
             while(size--){ // traversing the current level only...
                 int x = q.front();
                 if(x == n-1)return jump;
-                vis[x] = 1;
                 q.pop();
                 if(mp.find(nums[x]) != mp.end()){ // prime number that exists in nums
                     for(auto nxt:mp[nums[x]]){
                         if(nxt == n-1)return jump+1;
-                        if(!vis[nxt]) q.push(nxt);
+                        if(!vis[nxt]){vis[nxt] = 1; q.push(nxt);}
                     }
                     mp[nums[x]].clear();
                 }
-                if(x-1>=0 && !vis[x-1])q.push(x-1);
-                if(x+1 < n && !vis[x+1])q.push(x+1);
+                if(x-1>=0 && !vis[x-1]){vis[x-1] = 1; q.push(x-1);}
+                if(x+1 < n && !vis[x+1]){vis[x+1] = 1; q.push(x+1);}
                 if(x+1 == n-1)return jump+1;
             }
             jump++;
