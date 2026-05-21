@@ -10,7 +10,7 @@ public:
     }
     int longestCommonPrefix(vector<int>& a1, vector<int>& a2) {
         int n = a2.size();
-        set<int> st;
+        unordered_set<int> st;
         for (int i = n - 1; i >= 0; i--) {
             int x = a2[i];
             if (x == 0)
