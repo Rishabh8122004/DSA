@@ -53,17 +53,7 @@ public:
                     k++;
                 }
 
-                // inserting at the end
-
-                next = {};
-                next = rem;
-                for(int k = 0;k<block.size();k++){
-                    next.push_back(block[k]);
-                }
-                if (mp.count(next) == 0) {
-                        q.push(next);
-                        mp[next] = op + 1;
-                }
+                // inserting at the end is done in the loop itself.
             }
         }
     }
