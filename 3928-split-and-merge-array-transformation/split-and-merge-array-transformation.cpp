@@ -4,7 +4,9 @@ public:
     map<vector<int>, int> mp;
     int op; // number of operation till now..
     int solve(vector<int>& n2, int& n) {
-        auto& v = q.front();
+       while(!q.empty()){ 
+        auto v = q.front();
+        q.pop();
         op = mp[v]; // number of operation till now..
         if (v == n2) {
             return op;
@@ -64,8 +66,8 @@ public:
                 }
             }
         }
-        q.pop();
-        return solve(n2,n);
+    }
+        return 1;
     }
     int minSplitMerge(vector<int>& n1, vector<int>& n2) {
         int n = n1.size();
