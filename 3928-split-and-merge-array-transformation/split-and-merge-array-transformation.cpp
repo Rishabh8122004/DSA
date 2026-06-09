@@ -2,11 +2,12 @@ class Solution {
 public:
     queue<vector<int>> q;
     map<vector<int>, int> mp;
-    int solve(vector<int>& n2, int& n, int op) {
+    int op; // number of operation till now..
+    int solve(vector<int>& n2, int& n) {
         auto& v = q.front();
         op = mp[v]; // number of operation till now..
         if (v == n2) {
-            return mp[v];
+            return op;
         }
         for (int i = 0; i < v.size(); i++) {
             for (int j = i; j < v.size(); j++) {
@@ -64,12 +65,12 @@ public:
             }
         }
         q.pop();
-        return solve(n2,n,op);
+        return solve(n2,n);
     }
     int minSplitMerge(vector<int>& n1, vector<int>& n2) {
         int n = n1.size();
         mp[n1] = 0;
         q.push(n1);
-        return solve(n2, n, 0); // n2 vector, size, number of operation
+        return solve(n2, n); // n2 vector, size
     }
 };
