@@ -54,21 +54,6 @@ public:
         return a->parent;
     }
 
-    int org_distance = 0;
-    void distance(Node* lca, Node* target, bool& found, int ans) {
-        if (lca == target) {
-            found = true;
-            org_distance = ans;
-            return;
-        }
-        for (Node* node : lca->v) {
-            distance(node, target, found, ans + 1);
-            if (found)
-                return;
-        }
-        return;
-    }
-
     vector<int> assignEdgeWeights(vector<vector<int>>& e,
                                   vector<vector<int>>& q) {
         unordered_map<int, Node*> mp;
@@ -100,7 +85,7 @@ public:
         vector<int> ans(q.size());
 
         int n = e.size();
-        vector<long long> power(2 * n);
+        vector<long long> power(n);
         power[0] = 1;
 
         for (int i = 1; i < power.size(); i++) {
