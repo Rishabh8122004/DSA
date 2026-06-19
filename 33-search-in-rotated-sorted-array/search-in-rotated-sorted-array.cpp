@@ -15,7 +15,7 @@ public:
         int lo = 0,hi = nums.size()-1;
         int pi = -1;//pivot index
         int ele = -10005;// possible minimum element in the array 
-        while(lo<=hi){
+        while(lo<=hi){ // finding maximum in rotated array....
             int mid = lo+(hi-lo)/2;
             if(ele<nums[mid]){
                 pi = mid;
