@@ -1,9 +1,8 @@
 class Solution {
 public:
     long long mod = 1e9 + 7;
-    long po[100005];
-    long y = 1;
-    int solve(vector<long long>& pref_digit, vector<long long>& pref_sum,int& l, int& r) {
+    long long y = 1;
+    int solve(vector<long long>& pref_digit, vector<long long>& pref_sum,int& l, int& r,long long *po) {
         long long left, right;
         right = pref_digit[r];
         left = (((l>0?pref_digit[l-1]:0)*po[r-l+1]))%mod;
@@ -25,8 +24,9 @@ public:
         }
         m = z.size();
         vector<long long> pref_digit(m), pref_sum(m, 0);
+        long long po[m+5];
         // calculating powers of 10 :
-        for (int i = 0; i < 100005; i++) {
+        for (int i = 0; i < m+5; i++) {
             po[i] = y;
             y *= 10;
             y %= mod;
@@ -35,7 +35,7 @@ public:
         long long x = 0;
         for (int i = 0; i < m; i++) { // calculating prefix of digits and sum
             x = (x * 10 + (z[i] - '0')) % mod;
-            sum += (z[i] - '0') % mod;
+            sum += (z[i] - '0');
             pref_digit[i] = x;
             pref_sum[i] = sum;
         }
@@ -51,7 +51,7 @@ public:
                 ans.push_back(0);
                 continue;
             }
-            ans.push_back(solve(pref_digit, pref_sum, l, r));
+            ans.push_back(solve(pref_digit, pref_sum, l, r,po));
         }
         return ans;
     }
