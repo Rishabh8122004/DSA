@@ -3,8 +3,7 @@ public:
     long long mod = 1e9 + 7;
     long po[100005];
     long y = 1;
-    int solve(vector<long long>& pref_digit, vector<long long>& pref_sum,
-              int& l, int& r) {
+    int solve(vector<long long>& pref_digit, vector<long long>& pref_sum,int& l, int& r) {
         long long left, right;
         right = pref_digit[r];
         left = (((l>0?pref_digit[l-1]:0)*po[r-l+1]))%mod;
