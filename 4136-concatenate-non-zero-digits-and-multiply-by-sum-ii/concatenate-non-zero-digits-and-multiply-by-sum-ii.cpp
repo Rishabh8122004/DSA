@@ -1,7 +1,6 @@
 class Solution {
 public:
     long long mod = 1e9 + 7;
-    long long y = 1;
     int solve(vector<long long>& pref_digit, vector<long long>& pref_sum,int& l, int& r,long long *po) {
         long long left, right;
         right = pref_digit[r];
@@ -26,6 +25,7 @@ public:
         vector<long long> pref_digit(m), pref_sum(m, 0);
         long long po[m+5];
         // calculating powers of 10 :
+        long long y = 1;
         for (int i = 0; i < m+5; i++) {
             po[i] = y;
             y *= 10;
