@@ -5,6 +5,7 @@ public:
         return gcd(b,a%b);
     }
     int gcdOfOddEvenSums(int n) {
+        return n;
         int e = 0,o = 0;
         int x = 1;
         for(int i = 1;i<=n;i++){
