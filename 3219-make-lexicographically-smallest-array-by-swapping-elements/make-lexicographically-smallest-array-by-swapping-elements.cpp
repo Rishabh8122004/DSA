@@ -7,7 +7,7 @@ public:
             v.push_back({nums[i],i});
         }
         sort(v.begin(),v.end());
-        unordered_map<int, priority_queue<int>*>mp;// every index in this map points to it's dedicated vector of elements that can be swaped with it
+        vector<priority_queue<int>*>mp(n);// every index in this map points to it's dedicated vector of elements that can be swaped with it
         priority_queue<int>*pq = new priority_queue<int>;
         pq->push(v[0][0]);
         mp[v[0][1]] = pq;
