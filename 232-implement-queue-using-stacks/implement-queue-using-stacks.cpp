@@ -1,26 +1,35 @@
 class MyQueue {
 public:
-string a = "",b = "";
+    stack<int>s;
     MyQueue() {
         
     }
     
     void push(int x) {
-        a+=to_string(x);
+        stack<int>t;
+        while(!s.empty()){
+            t.push(s.top());
+            s.pop();
+        }
+        s.push(x);
+        while(!t.empty()){
+            s.push(t.top());
+            t.pop();
+        }
     }
     
     int pop() {
-        int x = a[0]-'0';
-        a = a.substr(1,a.size());
+        int x = s.top();
+        s.pop();
         return x;
     }
     
     int peek() {
-       return a[0]-'0';
+        return s.top();
     }
     
     bool empty() {
-        return a.empty();
+        return s.empty();
     }
 };
 
