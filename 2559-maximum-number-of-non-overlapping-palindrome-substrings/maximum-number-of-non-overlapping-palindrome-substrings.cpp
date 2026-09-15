@@ -19,8 +19,7 @@ public:
 
             if (is_palindrome(s, l, r)) {
 
-                cout << s.substr(l, r-l+1)
-                     << "  " << l << "-" << r << endl;
+                cout << s.substr(l, r-l+1)<< "  " << l << "-" << r << endl;
 
                 i = r + 1;
                 ans++;
