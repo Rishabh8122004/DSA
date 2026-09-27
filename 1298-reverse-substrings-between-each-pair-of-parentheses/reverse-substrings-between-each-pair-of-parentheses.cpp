@@ -10,8 +10,7 @@ public:
         for (int i = 0; i < n; i++) {
             if (s[i] == '(') {
                 st.push(i);
-            }
-            else if (s[i] == ')') {
+            } else if (s[i] == ')') {
                 int j = st.top();
                 st.pop();
 
@@ -21,17 +20,18 @@ public:
         }
 
         string ans = "";
+        int i = 0;
         int direction = 1;
 
-        for (int i = 0; i < n; i += direction) {
-
+        while (i >= 0 && i < n) {
             if (s[i] == '(' || s[i] == ')') {
                 i = match[i];
                 direction = -direction;
-            }
-            else {
+            } else {
                 ans += s[i];
             }
+
+            i += direction;
         }
 
         return ans;
