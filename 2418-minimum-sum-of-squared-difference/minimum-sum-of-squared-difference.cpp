@@ -7,6 +7,7 @@ public:
             diff[abs(n1[i]-n2[i])]++;
         }
         for(int i = 1e5+1;i>=1;i--){
+            if(k == 0)break;
             if(diff[i] == 0)continue;
             long long cnt = min(diff[i],k);
             diff[i-1]+=cnt;
