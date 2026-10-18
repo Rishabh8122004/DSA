@@ -1,10 +1,11 @@
 class Solution {
 public:
     int n;
-    long long binomial[1001][1001];
+    vector<vector<long long>> binomial;
     long long mod = 1e9 + 7;
     long long solve_dfs(vector<int> v) {
-        if (v.size() < 3) return 1;
+        if (v.size() < 3)
+            return 1;
         vector<int> left, right;
         for (int i = 1; i < v.size(); i++) {
             if (v[i] < v[0])
@@ -19,16 +20,13 @@ public:
     }
     int numOfWays(vector<int>& nums) {
         n = nums.size();
+        binomial.resize(n + 1);
         for (int i = 0; i <= n; i++) {
-            binomial[i][0] = 1; // first column = 1
-            binomial[i][i] = 1; // diagonal = 1
-        }
-        for (int i = 0; i <= n; i++) {
-            for (int j = 1; j <= i; j++) {
-                binomial[i][j] =
-                    (binomial[i - 1][j - 1] + binomial[i - 1][j]) % mod;
+            binomial[i] = vector<long long>(i + 1, 1);
+            for (int j = 1; j < i; j++) {
+                binomial[i][j] = (binomial[i - 1][j - 1] + binomial[i - 1][j]) % mod;
             }
         }
-        return (solve_dfs(nums) - 1)%mod;
+        return (solve_dfs(nums) - 1) % mod;
     }
 };
