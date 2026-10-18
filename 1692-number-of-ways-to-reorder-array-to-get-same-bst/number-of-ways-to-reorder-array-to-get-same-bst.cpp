@@ -1,7 +1,7 @@
 class Solution {
 public:
     int n;
-    vector<vector<long long>> binomial;
+    vector<vector<int>> binomial;
     long long mod = 1e9 + 7;
     long long solve_dfs(vector<int> v) {
         if (v.size() < 3)
@@ -22,7 +22,7 @@ public:
         n = nums.size();
         binomial.resize(n + 1);
         for (int i = 0; i <= n; i++) {
-            binomial[i] = vector<long long>(i + 1, 1);
+            binomial[i] = vector<int>(i + 1, 1);
             for (int j = 1; j < i; j++) {
                 binomial[i][j] = (binomial[i - 1][j - 1] + binomial[i - 1][j]) % mod;
             }
