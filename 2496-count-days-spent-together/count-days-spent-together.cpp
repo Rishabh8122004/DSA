@@ -19,7 +19,6 @@ public:
                 if ((i == lbm && j > lbd) || (i == abm && j < abd))
                     continue;
                 ans++;
-                cout<<i<<"-"<<j<<endl;
             }
         }
         return ans;
