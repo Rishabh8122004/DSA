@@ -23,7 +23,7 @@ public:
                 if (g[i][j] == 1) {
                     int sum = 0;
                     ans += (solve(i, j, g, sum) == true ? sum : 0);
-                    cout<<i<<" "<<j<<" "<<sum<<endl;
+                    //cout<<i<<" "<<j<<" "<<sum<<endl;
                 }
             }
         }
