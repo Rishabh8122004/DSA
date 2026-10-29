@@ -24,7 +24,7 @@ public:
                 }
                 i = j-1;
                 //cout<<num<<"  "<<x<<endl;
-                x = decodeString(x);
+                x = decodeString(x); // recursion used here
                 while(num--){
                     ans += x;
                 }
