@@ -10,9 +10,8 @@ public:
     }
     double myPow(double x, int n) {
         long long p = n;
-        long long N = p;
         p = abs(p);
         double ans = solve(x,p);
-       return (N<0?(1/ans):ans); 
+       return (n<0?(1/ans):ans); 
     }
 };
