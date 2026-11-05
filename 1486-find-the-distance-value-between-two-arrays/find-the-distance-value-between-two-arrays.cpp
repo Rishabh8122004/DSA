@@ -35,7 +35,6 @@ public:
                 f = false;
             }
             if(f)ans++;
-            cout<<f<<"  "<<a2[mid]<<endl;
         }
         return ans;
     }
