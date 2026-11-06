@@ -1,41 +1,44 @@
 class Solution {
 public:
-    vector<int> countServers(int n, vector<vector<int>>& l, int x,
-                             vector<int>& queries) {
-        for (int i = 0; i < l.size(); i++) {
-            swap(l[i][0], l[i][1]);
+    vector<int> countServers(int n, vector<vector<int>>& logs, int x, vector<int>& queries) {
+        int m = logs.size();
+        int qn = queries.size();
+
+        vector<pair<int,int>> events;   // (time, server)
+        for (int i = 0; i < m; i++) {
+            events.push_back({logs[i][1], logs[i][0]});
         }
-        vector<vector<int>> q;
-        for (int i = 0; i < queries.size(); i++) {
-            q.push_back({queries[i], i});
+        sort(events.begin(), events.end());
+
+        vector<pair<int,int>> qs;       // (query time, original index)
+        for (int i = 0; i < qn; i++) {
+            qs.push_back({queries[i], i});
         }
-        sort(l.begin(), l.end());
-        sort(q.begin(), q.end());
-        int k = 0;
-        int i = -1, j = -1, lo, hi;
-        vector<int> ans(q.size());
-        unordered_map<int, int> mp;
-        while (k < q.size()) {
-            lo = q[k][0] - x;
-            hi = q[k][0];
-            while ((j + 1 < l.size()) && (l[j + 1][0] <= hi)) {
-                mp[l[j + 1][1]]++;
-                j++;
+        sort(qs.begin(), qs.end());
+
+        vector<int> cnt(n + 1, 0);
+        int active = 0;    // servers with at least one request in the window
+        int left = 0;      // first log still inside the window
+        int right = 0;     // first log not yet added
+        vector<int> ans(qn);
+
+        for (int k = 0; k < qn; k++) {
+            int hi = qs[k].first;
+            int lo = hi - x;
+
+            while (right < m && events[right].first <= hi) {
+                int s = events[right].second;
+                if (cnt[s] == 0) active++;
+                cnt[s]++;
+                right++;
             }
-            if (i == -1 && j >= 0)
-                i = 0;
-            while ((i < l.size()) && (l[i][0] < lo)) {
-                if(mp[l[i][1]])mp[l[i][1]]--;
-                if(mp[l[i][1]] == 0){
-                    mp.erase(l[i][1]);
-                }
-                i++;
+            while (left < right && events[left].first < lo) {
+                int s = events[left].second;
+                cnt[s]--;
+                if (cnt[s] == 0) active--;
+                left++;
             }
-            if ((i == -1 && j == -1) || (i > j))
-                ans[q[k][1]] = n;
-            else
-                ans[q[k][1]] = (n - mp.size());
-            k++;
+            ans[qs[k].second] = n - active;
         }
         return ans;
     }
