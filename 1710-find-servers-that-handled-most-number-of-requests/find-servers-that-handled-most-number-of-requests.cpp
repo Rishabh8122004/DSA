@@ -20,11 +20,11 @@ public:
             if (it == st.end()) { // no bigger/next server is available
                 it = st.begin();
             }
-
-            busy_server.push({arrival[i] + load[i] , *it});
-            count[*it]++;
-            mx = max(mx,count[*it]);
-            st.erase(*it);
+            int server = *it;
+            busy_server.push({arrival[i] + load[i] , server});
+            count[server]++;
+            mx = max(mx,count[server]);
+            st.erase(server);
         }
         vector<int>ans;
         for(int i = 0;i<k;i++){
