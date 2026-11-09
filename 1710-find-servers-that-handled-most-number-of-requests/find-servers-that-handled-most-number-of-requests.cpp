@@ -10,7 +10,6 @@ public:
 
         for (int i = 0; i < arrival.size(); i++) {
             while (!busy_server.empty() && (busy_server.top().first <= arrival[i])) { // excluding the server that are free now
-                cout<<arrival[i]<<"   "<<busy_server.top().second<<endl;
                 st.insert(busy_server.top().second);
                 busy_server.pop();
             }
