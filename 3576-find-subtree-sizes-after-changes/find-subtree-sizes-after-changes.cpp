@@ -13,10 +13,10 @@ public:
         last_seen[c].pop();
         return;
     }
-    int size(int i, vector<int>& ans, vector<vector<int>>& new_child) {
+    int size(int i, vector<int>& ans, vector<vector<int>>& child) {
         int total = 1;
-        for(int j = 0;j<new_child[i].size();j++){
-            total += size(new_child[i][j],ans,new_child);
+        for(int j = 0;j<child[i].size();j++){
+            total += size(child[i][j],ans,child);
         }
         return ans[i] = total;
     }
@@ -27,12 +27,14 @@ public:
             child[p[i]].push_back(i);
         }
         dfs(0, child, s, p);
-        vector<vector<int>> new_child(n);
+        for(int i = 0;i<n;i++){
+            child[i] = {};
+        }
         for (int i = 1; i < n; i++) {
-            new_child[p[i]].push_back(i);
+            child[p[i]].push_back(i);
         }
         vector<int> ans(n, 0);
-        size(0, ans, new_child);
+        size(0, ans, child);
         return ans;
     }
 };
